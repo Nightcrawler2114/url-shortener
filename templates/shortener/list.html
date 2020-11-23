@@ -1,0 +1,17 @@
+{% extends 'shortener/base.html' %}
+
+{% block content %}
+    <h1>URLS</h1>
+    <h3><a href="{% url 'create_view' %}">Add URL</a></h3>
+    <ul>
+    {% for url in object_list %}
+        <li class="url-holder" data-id="{{url.id}}" title="long url: {{url.long_url}}">
+            <a href="{{url.long_url}}"  target="_blank">{{url.short_url}}</a>
+            <br>
+            <p class="visits-holder">Visits: ({{url.visits}})</p>
+        </li>
+    {% empty %}
+        <h1 style="color: red">No urls added.</h1>
+    {% endfor %}
+    </ul>
+{% endblock content %}
